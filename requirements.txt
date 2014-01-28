@@ -1,0 +1,11 @@
+dj-database-url==0.2.2
+gunicorn==18.0
+psycopg2==2.5.1
+requests==2.1.0
+static==0.4
+wsgiref==0.1.2
+pytz
+python-memcached==1.53
+
+-e git+https://github.com/gciding/dj-static.git@2d5fde1b9f8d80e401bdcd93bcfcbf988a608cab#egg=dj-static
+-e git+https://github.com/django/django.git#egg=django
