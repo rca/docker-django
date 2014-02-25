@@ -1,6 +1,12 @@
 Sample Docker Image for Django
 ------------------------------
 
+Build:
+
+```
+docker build -t djangoapp .
+```
+
 Run like so:
 
 ```
