@@ -35,4 +35,4 @@ ENV SERVICE_PORT 8000
 
 
 # The default command to run
-CMD gunicorn_django /app/djapp/settings.py -b 0.0.0.0:8000 --workers=3
+CMD cd && gunicorn djapp.wsgi:application -b 0.0.0.0:8000 --workers=3
