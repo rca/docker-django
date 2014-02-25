@@ -80,3 +80,34 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# setup memcached
+memcached_url = os.environ.get('MEMCACHED_URL')
+if memcached_url:
+    # the memcached location can be a comma-delimited list of servers
+    memcached_location = memcached_url.split(',')
+
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+            'LOCATION': memcached_location,
+        }
+    }
+else:
+    print 'MEMCACHED_URL not found in environment, not setting cache backend'
+
+
+# setup the AMQP broker
+broker_url = os.environ.get('BROKER_URL')
+if broker_url:
+    BROKER_URL = broker_url
+else:
+    print 'BROKER_URL not found in environment, not setting'
+
+
+# setup postgresql, uses DATABASE_URL environment var
+import dj_database_url
+
+dj_db_config = dj_database_url.config()
+if dj_db_config:
+    DATABASES['default'] = dj_db_config
