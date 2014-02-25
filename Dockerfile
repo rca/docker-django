@@ -4,7 +4,7 @@ MAINTAINER Roberto Aguilar roberto@baremetal.io
 
 # Base stuff for python-based update_runtime
 RUN apt-get update
-RUN apt-get install -y python python-pip
+RUN apt-get install -y software-properties-common python python-pip
 
 RUN pip install jinja2
 
